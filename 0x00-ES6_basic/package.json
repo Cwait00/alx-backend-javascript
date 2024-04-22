@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node 7-main.js"
+    "dev": "node 8-main.js"
   },
   "keywords": [],
   "author": "",
