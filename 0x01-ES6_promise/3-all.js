@@ -1,12 +1,13 @@
 import { uploadPhoto, createUser } from './utils.js';
 
-async function handleProfileSignup() {
-  try {
-    const [photo, user] = await Promise.all([uploadPhoto(), createUser()]);
-    console.log(`${photo.body} ${user.firstName} ${user.lastName}`);
-  } catch (error) {
-    console.log('Signup system offline');
-  }
+function handleProfileSignup() {
+  Promise.all([uploadPhoto(), createUser()])
+    .then((results) => {
+      const [photo, user] = results;
+      if (photo && photo.body && user && user.firstName && user.lastName) {
+        console.log(`${photo.body} ${user.firstName} ${user.lastName}`);
+      }
+    })
 }
 
 export default handleProfileSignup;
