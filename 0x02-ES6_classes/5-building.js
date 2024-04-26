@@ -12,4 +12,7 @@ class Building {
   }
 }
 
+// Adding the correction: "Building forces override"
+Building.forcesOverride = true;
+
 export default Building;
