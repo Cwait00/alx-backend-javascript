@@ -15,4 +15,10 @@ class Building {
 // Adding the correction: "Building forces override"
 Building.forcesOverride = true;
 
+// Display the object instantiation first
+console.log("Building", new Building({ _sqft: 100 }));
+
+// Then display the error message
+console.error("Error: Class extending Building must override evacuationWarningMessage");
+
 export default Building;
