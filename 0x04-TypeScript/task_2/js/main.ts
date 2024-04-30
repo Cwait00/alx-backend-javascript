@@ -51,7 +51,20 @@ function createEmployee(salary: number | string): Director | Teacher {
     }
 }
 
+// Define isDirector function
+function isDirector(employee: Director | Teacher): employee is Director {
+    return (employee as Director).workDirectorTasks !== undefined;
+}
+
+// Define executeWork function
+function executeWork(employee: Director | Teacher): string {
+    if (isDirector(employee)) {
+        return employee.workDirectorTasks();
+    } else {
+        return employee.workTeacherTasks();
+    }
+}
+
 // Example usage
-console.log(createEmployee(200)); // Output: Teacher
-console.log(createEmployee(1000)); // Output: Director
-console.log(createEmployee('$500')); // Output: Director
+console.log(executeWork(createEmployee(200))); // Output: Getting to work
+console.log(executeWork(createEmployee(1000))); // Output: Getting to director tasks
