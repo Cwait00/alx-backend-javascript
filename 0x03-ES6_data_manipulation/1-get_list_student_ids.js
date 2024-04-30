@@ -1,8 +1,9 @@
-function getListStudentIds(list) {
-    if (!Array.isArray(list)) {
-        return [];
-    }
-    return list.map(student => student.id);
+// 1-get_list_student_ids.js
+function getListStudentIds(arrayOfObjects) {
+  if (!Array.isArray(arrayOfObjects)) {
+    return [];
+  }
+  return arrayOfObjects.map((student) => student.id);
 }
 
 export default getListStudentIds;
