@@ -65,6 +65,20 @@ function executeWork(employee: Director | Teacher): string {
     }
 }
 
+// Define the Subjects string literal type
+type Subjects = "Math" | "History";
+
+// Define the teachClass function
+function teachClass(todayClass: Subjects): string {
+    if (todayClass === "Math") {
+        return "Teaching Math";
+    } else if (todayClass === "History") {
+        return "Teaching History";
+    } else {
+        throw new Error("Invalid subject");
+    }
+}
+
 // Example usage
-console.log(executeWork(createEmployee(200))); // Output: Getting to work
-console.log(executeWork(createEmployee(1000))); // Output: Getting to director tasks
+console.log(teachClass('Math')); // Output: Teaching Math
+console.log(teachClass('History')); // Output: Teaching History
