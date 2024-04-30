@@ -1,13 +1,15 @@
 // 8-clean_set.js
 function cleanSet(set, startString) {
-  if (typeof startString !== 'string' || startString === '') {
-    return '';
+  if (startString && typeof startString === 'string') {
+    let result = '';
+    for (const value of set) {
+      if (typeof value === 'string' && value.startsWith(startString)) {
+        result += `${result.length > 0 ? '-' : ''}${value.substring(startString.length)}`;
+      }
+    }
+    return result;
   }
-
-  return [...set]
-    .filter(item => typeof item === 'string' && item.startsWith(startString))
-    .map(item => item.slice(startString.length))
-    .join('-');
+  return '';
 }
 
 export default cleanSet;
