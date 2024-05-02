@@ -37,3 +37,16 @@ const director1: Directors = {
 };
 
 console.log(director1);
+
+// Function to print teacher's name
+function printTeacher(firstName: string, lastName: string): string {
+  return firstName.charAt(0) + '. ' + lastName;
+}
+
+// Interface for the printTeacher function
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+// Test printTeacher function
+console.log(printTeacher('John', 'Doe')); // Output: J. Doe
