@@ -17,8 +17,23 @@ class Teacher {
   }
 }
 
+interface Directors extends Teacher {
+  numberOfReports: number;
+}
+
 // Example usage
 const teacher3: Teacher = new Teacher('John', 'Doe', false, 'London');
 teacher3.contract = false;
 
 console.log(teacher3);
+
+// Example usage of Directors interface
+const director1: Directors = {
+  firstName: 'John',
+  lastName: 'Doe',
+  fullTimeEmployee: true,
+  location: 'London',
+  numberOfReports: 17,
+};
+
+console.log(director1);
