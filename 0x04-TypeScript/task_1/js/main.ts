@@ -1,28 +1,24 @@
-// Define interface for the class constructor
-interface StudentClassConstructor {
-    new(firstName: string, lastName: string): StudentClass;
-}
+class Teacher {
+  firstName: string;
+  lastName: string;
+  fullTimeEmployee: boolean;
+  yearsOfExperience?: number;
+  location: string;
+  [key: string]: any; // Allow any other dynamic attribute
 
-// Define interface for the class
-interface StudentClass {
-    workOnHomework(): string;
-    displayName(): string;
-}
-
-// Implement the class
-class StudentClass implements StudentClass {
-    constructor(public firstName: string, public lastName: string) {}
-
-    workOnHomework(): string {
-        return "Currently working";
+  constructor(firstName: string, lastName: string, fullTimeEmployee: boolean, location: string, yearsOfExperience?: number) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.fullTimeEmployee = fullTimeEmployee;
+    this.location = location;
+    if (yearsOfExperience !== undefined) {
+      this.yearsOfExperience = yearsOfExperience;
     }
-
-    displayName(): string {
-        return this.firstName;
-    }
+  }
 }
 
 // Example usage
-const student = new StudentClass("John", "Doe");
-console.log(student.workOnHomework()); // Output: Currently working
-console.log(student.displayName()); // Output: John
+const teacher3: Teacher = new Teacher('John', 'Doe', false, 'London');
+teacher3.contract = false;
+
+console.log(teacher3);
