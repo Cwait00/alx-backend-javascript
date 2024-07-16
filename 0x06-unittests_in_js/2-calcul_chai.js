@@ -1,4 +1,4 @@
-// 2-calcul_chai.js
+// 1-calcul.js
 
 function calculateNumber(type, a, b) {
   const roundedA = Math.round(a);
@@ -18,4 +18,4 @@ function calculateNumber(type, a, b) {
   }
 }
 
-module.exports = calculateNumberi;
+module.exports = calculateNumber;
