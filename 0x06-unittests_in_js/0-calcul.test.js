@@ -51,7 +51,7 @@ describe('calculateNumber', function() {
   it('should round correctly near .5 boundaries', function() {
     assert.strictEqual(calculateNumber(2.5, 2.5), 6);
     assert.strictEqual(calculateNumber(2.4, 2.4), 4);
-    assert.strictEqual(calculateNumber(-2.5, -2.5), -5);  // Corrected to -5
+    assert.strictEqual(calculateNumber(-2.5, -2.5), -4);  // Corrected to -4
     assert.strictEqual(calculateNumber(-2.4, -2.4), -4);
   });
 });
