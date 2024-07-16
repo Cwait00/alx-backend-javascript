@@ -1,6 +1,4 @@
-// 1-calcul.js
-
-function calculateNumber(type, a, b) {
+export default function calculateNumber(type, a, b) {
   const roundedA = Math.round(a);
   const roundedB = Math.round(b);
 
@@ -17,5 +15,3 @@ function calculateNumber(type, a, b) {
     throw new Error('Invalid type');
   }
 }
-
-module.exports = calculateNumber;
