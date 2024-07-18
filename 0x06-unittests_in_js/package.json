@@ -3,18 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "test": "npm run test:commonjs && npm run test:esm",
-    "test:commonjs": "mocha 0-calcul.test.js",
-    "test:esm": "mocha 2-calcul_chai.test.js --require esm"
+    "test": "mocha 0-calcul.test.js"
   },
   "devDependencies": {
     "mocha": "^8.4.0",
-    "sinon": "^18.0.0",
-    "esm": "^3.2.25"
+    "sinon": "^18.0.0"
   },
   "dependencies": {
-    "chai": "^4.3.4"
+    "chai": "^5.1.1"
   }
 }
