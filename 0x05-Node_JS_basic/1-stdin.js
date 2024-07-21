@@ -1,31 +1,13 @@
-// Import the readline module
-const readline = require('readline');
+process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-// Create an interface to read input from stdin
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
+process.stdin.on('data', (data) => {
+  const name = data.toString().trim();
+  process.stdout.write(`Your name is: ${name}\n`);
+  process.stdin.pause(); // Pause the input stream instead of ending it
 });
 
-// Prompt the user for their name
-console.log('Welcome to Holberton School, what is your name?');
-
-// Read the user's input
-rl.question('', (name) => {
-  // Display the user's name
-  console.log(`Your name is: ${name}`);
-  
-  // Close the readline interface
-  rl.close();
+process.on('exit', () => {
+  process.stdout.write('This important software is now closing\n');
 });
 
-// When the readline interface is closed, display the closing message
-rl.on('close', () => {
-  console.log('This important software is now closing');
-});
-
-// Ensure the program handles EOF properly
 process.stdin.resume();
-process.stdin.on('end', () => {
-  rl.close();
-});
