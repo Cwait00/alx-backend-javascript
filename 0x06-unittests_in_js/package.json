@@ -5,9 +5,13 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha 0-calcul.test.js 2-calcul_chai.test.js"
+    "test": "npx babel-node --presets @babel/preset-env node_modules/mocha/bin/mocha --require @babel/register --extensions '.js' '0-calcul.test.js' '2-calcul_chai.test.js' '7-skip.test.js'"
   },
   "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.24.9",
+    "@babel/preset-env": "^7.24.8",
+    "@babel/register": "^7.24.6",
     "mocha": "^8.4.0",
     "sinon": "^18.0.0"
   },
