@@ -13,10 +13,12 @@ describe('1-stdin.js', () => {
 
     child.stdin.write('Alice\n');
 
-    child.on('close', (code) => {
-      assert.strictEqual(output.includes('Welcome to Holberton School, what is your name?'), true);
-      assert.strictEqual(output.includes('Your name is: Alice'), true);
-      assert.strictEqual(output.includes('This important software is now closing'), true);
+    child.stdin.end();
+
+    child.on('exit', (code) => {
+      assert.strictEqual(output.includes('Welcome to Holberton School, what is your name?\n'), true);
+      assert.strictEqual(output.includes('Your name is: Alice\n'), true);
+      assert.strictEqual(output.includes('This important software is now closing\n'), true);
       done();
     });
   });
