@@ -23,3 +23,9 @@ rl.question('', (name) => {
 rl.on('close', () => {
   console.log('This important software is now closing');
 });
+
+// Ensure the program handles EOF properly
+process.stdin.resume();
+process.stdin.on('end', () => {
+  rl.close();
+});
