@@ -1,13 +1,17 @@
-process.stdout.write('Welcome to Holberton School, what is your name?\n');
+const readline = require('readline');
 
-process.stdin.on('data', (data) => {
-  const name = data.toString().trim();
-  process.stdout.write(`Your name is: ${name}\n`);
-  process.stdin.pause(); // Pause the input stream instead of ending it
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
 });
 
-process.on('exit', () => {
-  process.stdout.write('This important software is now closing\n');
+console.log('Welcome to Holberton School, what is your name?');
+
+rl.on('line', (name) => {
+  console.log(`Your name is: ${name}`);
+  rl.close();
 });
 
-process.stdin.resume();
+rl.on('close', () => {
+  console.log('This important software is now closing');
+});
