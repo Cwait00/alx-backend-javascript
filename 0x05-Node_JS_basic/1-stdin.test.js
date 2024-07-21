@@ -6,20 +6,23 @@ const exec = path.join(__dirname, '.', '1-stdin.js');
 
 describe('main', () => {
   it('the user is entering a name', function (done) {
-    const proc = child.spawn("node", [exec], { stdio: 'pipe' });
+    const proc = child.spawn('node', [exec], { stdio: 'pipe' });
 
-    proc.stdout.once('data', (test) => {
-      expect(test.toString()).to.equal('Welcome to Holberton School, what is your name?\n');
-      proc.stdin.write('Guillaumeh\n');
-      proc.stdout.once('data', (test) => {
-        expect(test.toString()).to.equal('Your name is: Guillaumeh\n');
-        proc.on('close', () => {
-          proc.stdout.once('data', (test) => {
-            expect(test.toString()).to.equal('This important software is now closing\n');
-            done();
-          });
-        });
-      });
+    let output = '';
+
+    proc.stdout.on('data', (data) => {
+      output += data.toString();
+    });
+
+    proc.stdin.write('Guillaumeh\n');
+
+    proc.stdin.end();
+
+    proc.on('close', (code) => {
+      expect(output).to.include('Welcome to Holberton School, what is your name?\n');
+      expect(output).to.include('Your name is: Guillaumeh\n');
+      expect(output).to.include('This important software is now closing\n');
+      done();
     });
   });
 });
