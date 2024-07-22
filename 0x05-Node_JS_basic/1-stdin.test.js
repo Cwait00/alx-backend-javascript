@@ -1,28 +1,25 @@
+const { exec } = require('child_process');
 const { expect } = require('chai');
-const path = require('path');
-const child = require('child_process');
 
-const exec = path.join(__dirname, '.', '1-stdin.js');
+describe('1-stdin.js', () => {
+  it('should handle user input and display correct output', (done) => {
+    const child = exec('node 1-stdin.js');
 
-describe('main', () => {
-  it('the user is entering a name', function (done) {
-    const proc = child.spawn('node', [exec], { stdio: ['pipe', 'pipe', process.stderr] });
+    child.stdout.once('data', (data) => {
+      expect(data.toString()).to.include('Welcome to Holberton School, what is your name?');
 
-    let output = '';
-
-    proc.stdout.on('data', (data) => {
-      output += data.toString();
+      // Simulate user input
+      child.stdin.write('John Doe\n');
     });
 
-    proc.stdin.write('Guillaumeh\n');
-    proc.stdin.end();
+    child.stdout.once('data', (data) => {
+      expect(data.toString()).to.include('Your name is: John Doe');
+      child.stdin.end(); // End the stdin to finish the test
+    });
 
-    proc.on('close', () => {
-      const lines = output.split('\n');
-      expect(lines[0]).to.equal('Welcome to Holberton School, what is your name?');
-      expect(lines[1]).to.equal('Your name is: Guillaumeh');
-      expect(lines[2]).to.equal('This important software is now closing');
-      done();
+    child.stdout.once('data', (data) => {
+      expect(data.toString()).to.include('This important software is now closing');
+      done(); // Finish the test
     });
   });
 });

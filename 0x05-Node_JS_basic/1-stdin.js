@@ -10,4 +10,4 @@ process.on('exit', () => {
   process.stdout.write('This important software is now closing\n');
 });
 
-process.stdin.resume();
+process.stdin.resume(); // Resume the input stream
