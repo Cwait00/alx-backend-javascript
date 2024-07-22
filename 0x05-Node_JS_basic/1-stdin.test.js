@@ -16,13 +16,18 @@ describe('1-stdin.js', () => {
 
     child.on('close', (code) => {
       expect(code).to.equal(0);
-      expect(output).to.include('Welcome to Holberton School, what is your name?');
-      expect(output).to.include('Your name is: John Doe');
-      expect(output).to.include('This important software is now closing');
+
+      // Split the output into lines for easier checking
+      const lines = output.split('\n');
+
+      expect(lines[0]).to.include('Welcome to Holberton School, what is your name?');
+      expect(lines[1]).to.include('Your name is: John Doe');
+      expect(lines[2]).to.include('This important software is now closing');
+
       done();
     });
 
-    // Simulate user input after a small delay to ensure prompt is received
+    // Ensure prompt is processed before sending input
     setTimeout(() => {
       child.stdin.write('John Doe\n');
       child.stdin.end();
